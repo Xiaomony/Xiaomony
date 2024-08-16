@@ -1,5 +1,5 @@
 <template>
-    <Hero />
+    <Hero crrPage="Home" />
     <div id="main_body">
         <GroupList />
     </div>
