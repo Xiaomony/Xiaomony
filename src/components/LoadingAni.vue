@@ -9,8 +9,8 @@
 export default {
     props: {
         sidelen: {
-            type: Number,
-            default: 50,
+            type: String,
+            default: "50",
         },
     },
 };
