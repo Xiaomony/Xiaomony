@@ -1,6 +1,9 @@
 @import "./base.css";
 
+@import url("https://fonts.googleapis.com/css2?family=Moderustic:wght@300..800&family=Noto+Sans+SC:wght@100..900&display=swap");
+
 #app {
+    font-family: "Moderustic", "Noto Sans SC", sans-serif;
     display: flex;
     flex-direction: column;
     justify-items: start;

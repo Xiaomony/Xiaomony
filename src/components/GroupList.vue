@@ -28,11 +28,10 @@ export default {
         };
     },
     async mounted() {
-        const group_list = await loadgroups();
-        this.glist = group_list;
-        setTimeout(() => {
+        loadgroups().then(group_list => {
+            this.glist = group_list;
             this.is_loading = false;
-        }, 100);
+        });
     },
     methods: {},
 };

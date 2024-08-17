@@ -1,6 +1,6 @@
 <template>
     <header id="hero">
-        <img id="avatar" :src="avatar_url" />
+        <img id="avatar" :src="this.$config.g_avatar_url" />
         <h1 id="name">Xiao-mony</h1>
     </header>
     <nav>
@@ -19,8 +19,23 @@
                     {{ item.name }}
                 </RouterLink>
             </li>
-            <div class="underline" :style="underlineStyle"></div>
+            <div
+                v-if="underline_width > 0"
+                class="underline"
+                :style="underlineStyle"
+            ></div>
         </ul>
+        <div id="links">
+            <a href="https://github.com/Xiaomony" target="_blank">
+                <img
+                    :src="this.$config.g_github_icon_url"
+                    width="25px"
+                    height="25px"
+                    alt="Github"
+                    title="my Github page"
+                />
+            </a>
+        </div>
     </nav>
 </template>
 
@@ -47,24 +62,25 @@ export default {
             item => item.name === this.crrPage
         );
         return {
-            avatar_url: this.$config.g_avatar_url,
             navItemList: navItems,
             crrTabIndex: crrTabIndex,
             hoverTabIndex: crrTabIndex,
             underline_width: 0,
             underline_left: 0,
+            underline_bottom: 0,
         };
     },
     mounted() {
         const tabElement = this.$refs.navItems[this.hoverTabIndex];
         this.underline_left = tabElement.offsetLeft;
+        this.underline_top = tabElement.offsetTop + tabElement.offsetHeight;
         this.underline_width = tabElement.clientWidth;
-        this.$forceUpdate();
     },
     computed: {
         underlineStyle() {
             return {
                 left: `${this.underline_left}px`,
+                top: `${this.underline_top}px`,
                 width: `${this.underline_width}px`,
             };
         },
@@ -73,74 +89,11 @@ export default {
         hoverTabIndex(newValue) {
             const tabElement = this.$refs.navItems[newValue];
             this.underline_left = tabElement.offsetLeft;
+            this.underline_top = tabElement.offsetTop + tabElement.offsetHeight;
             this.underline_width = tabElement.clientWidth;
         },
     },
 };
 </script>
 
-<style scoped>
-#hero {
-    height: 300px;
-    background-image: url("../hero_bkg.png");
-    background-size: cover;
-    background-position: center -70px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-
-    #avatar {
-        max-width: 10%;
-        border-radius: 50%;
-        border: 3px solid rgba(105, 105, 105, 0.5);
-        filter: drop-shadow(3px 3px 10px #000000);
-    }
-    #name {
-        padding: 5px;
-        color: rgb(224, 224, 224);
-        border-radius: 10px;
-        background-color: rgba(71, 71, 71, 0.6);
-        filter: drop-shadow(3px 3px 4px #000000);
-    }
-}
-nav {
-    display: flex;
-    background-color: #242424;
-    border-bottom: 3px solid #505050;
-
-    #navbar {
-        position: relative;
-
-        list-style: none;
-        justify-content: space-between;
-        align-items: center;
-        display: flex;
-        padding: 7px;
-        gap: 25px;
-        .navitem {
-            cursor: pointer;
-        }
-        a {
-            color: rgb(209, 209, 209);
-            text-decoration: none;
-        }
-        .navitem.active a {
-            color: azure;
-            font-weight: bolder;
-        }
-        .underline {
-            position: absolute;
-            bottom: 5px;
-            height: 4px;
-            border-radius: 2px;
-            background-color: rgb(46, 154, 255);
-            transition: left 0.3s ease, width 0.3s ease;
-            width: 10px;
-            left: 0;
-        }
-    }
-}
-</style>
+<style scoped src="@/assets/HeroStyle.css"></style>

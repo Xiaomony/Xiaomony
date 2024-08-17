@@ -28,7 +28,6 @@ export default {
 
 <style scoped>
 .box {
-    font-family: Consola;
     padding: 10px;
     background-color: rgb(90, 92, 94);
     color: #e2e2e2;
