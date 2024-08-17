@@ -1,18 +1,20 @@
 <template>
     <Container class="groups_container">
         <LoadingAni v-if="is_loading" id="loading" sidelen="75" />
-        <GroupBox
+        <RouterLink
+            style="text-decoration: none"
             v-else
             v-for="item in glist"
             :key="item.id"
-            :group_info="item"
+            :to="'/blogroup/' + item.id"
         >
-        </GroupBox>
+            <GroupBox :group_info="item"> </GroupBox>
+        </RouterLink>
     </Container>
 </template>
 
 <script>
-import { loadgroups } from "../file_loader";
+import { getgroups } from "../file_loader";
 import GroupBox from "./GroupBox.vue";
 import LoadingAni from "./LoadingAni.vue";
 
@@ -28,7 +30,7 @@ export default {
         };
     },
     async mounted() {
-        loadgroups().then(group_list => {
+        getgroups().then(group_list => {
             this.glist = group_list;
             this.is_loading = false;
         });

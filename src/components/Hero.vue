@@ -7,7 +7,7 @@
 
 <style scoped>
 #hero {
-    height: 300px;
+    height: auto;
     background-image: url("../hero_bkg.png");
     background-size: cover;
     background-position: center -70px;

@@ -5,6 +5,16 @@ nav {
     border-bottom: 3px solid rgba(112, 112, 112, 0.3);
     align-items: center;
 
+    #nav_avatar {
+        display: flex;
+        align-items: center;
+        img {
+            max-width: 40px;
+            border-radius: 35%;
+            border: 3px solid rgba(105, 105, 105, 0.5);
+            filter: drop-shadow(3px 3px 10px #000000);
+        }
+    }
     #navbar {
         position: relative;
 

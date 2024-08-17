@@ -1,5 +1,8 @@
 <template>
     <nav>
+        <RouterLink to="/" id="nav_avatar">
+            <img :src="this.$config.g_avatar_url" title="Xiao-mony" />
+        </RouterLink>
         <ul id="navbar">
             <li
                 v-for="(item, index) in navItemList"
