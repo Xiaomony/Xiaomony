@@ -12,6 +12,10 @@ import router from "@/router";
 
 const app = createApp(App);
 
+document.body.style.setProperty(
+    "--hero_bkg_url",
+    `url(${config.g_hero_bkg_url})`
+);
 app.config.globalProperties.$config = config;
 app.component("Container", Container);
 app.component("Hero", Hero);

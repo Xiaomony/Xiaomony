@@ -19,5 +19,9 @@ export const config = {
             name: "Intro",
             url: "/Intro",
         },
+        {
+            name: "Blogs",
+            url: "/allgroups",
+        },
     ],
 };

@@ -4,12 +4,18 @@
         <RouterLink
             style="text-decoration: none"
             v-else
-            v-for="item in glist"
+            v-for="item in glist.slice(
+                0,
+                max_index == -1
+                    ? glist.length
+                    : Math.min(max_index, glist.length)
+            )"
             :key="item.id"
             :to="'/blogroup/' + item.id"
         >
             <GroupBox :group_info="item"> </GroupBox>
         </RouterLink>
+        <slot></slot>
     </Container>
 </template>
 
@@ -23,6 +29,7 @@ export default {
         GroupBox,
         LoadingAni,
     },
+    props: { max_index: { type: String, default: "-1" } },
     data() {
         return {
             is_loading: true,
@@ -35,7 +42,6 @@ export default {
             this.is_loading = false;
         });
     },
-    methods: {},
 };
 </script>
 

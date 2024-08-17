@@ -1,5 +1,5 @@
 <template>
-    <myNav />
+    <myNav crrPage="Blogs" />
     <div class="page">
         <Container id="bloglist">
             <LoadingAni v-if="isloading" />

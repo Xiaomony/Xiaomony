@@ -2,7 +2,13 @@
     <Hero />
     <myNav crrPage="Home" />
     <div id="main_body">
-        <GroupList />
+        <GroupList max_index="5">
+            <RouterLink to="/allgroups">
+                <button id="all_blogs_button" class="push_button">
+                    All Blogs
+                </button>
+            </RouterLink>
+        </GroupList>
     </div>
 </template>
 
@@ -20,6 +26,10 @@ export default {
 #main_body {
     display: flex;
     justify-content: center;
-    background-color: rgb(160, 179, 179);
+    /* background-color: rgb(160, 179, 179); */
+}
+#all_blogs_button {
+    width: 30%;
+    height: 40px;
 }
 </style>
