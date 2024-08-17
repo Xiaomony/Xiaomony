@@ -1,17 +1,16 @@
 <template>
-    <Hero crrPage="Home" />
+    <Hero />
+    <myNav crrPage="Home" />
     <div id="main_body">
         <GroupList />
     </div>
 </template>
 
 <script>
-import Hero from "@/components/Hero.vue";
 import GroupList from "@/components/GroupList.vue";
 
 export default {
     components: {
-        Hero,
         GroupList,
     },
 };

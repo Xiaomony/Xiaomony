@@ -9,4 +9,15 @@ export const config = {
     g_blogs_dir: "blogs/",
     g_blogs_groups_file: "groups.json",
     g_group_config_file: "config.json",
+
+    g_nav_items: [
+        {
+            name: "Home",
+            url: "/",
+        },
+        {
+            name: "Intro",
+            url: "/Intro",
+        },
+    ],
 };

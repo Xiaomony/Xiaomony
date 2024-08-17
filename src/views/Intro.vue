@@ -1,16 +1,11 @@
 <template>
-    <Hero crrPage="Intro" />
+    <Hero />
+    <myNav crrPage="Intro" />
     Some Introduce
 </template>
 
 <script>
-import Hero from "@/components/Hero.vue";
-
-export default {
-    components: {
-        Hero,
-    },
-};
+export default {};
 </script>
 
 <style></style>
