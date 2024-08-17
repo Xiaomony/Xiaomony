@@ -22,12 +22,10 @@
 
 <script>
 import Box from "@/components/Box.vue";
-import LoadingAni from "@/components/LoadingAni.vue";
 import { getblogs_byGroupID } from "@/file_loader";
 
 export default {
     components: {
-        LoadingAni,
         Box,
     },
     data() {
@@ -60,7 +58,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .page {
     display: flex;
     justify-content: center;

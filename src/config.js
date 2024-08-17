@@ -1,5 +1,5 @@
 export const config = {
-    g_hero_bkg_url: "hero_bkg.png",
+    g_hero_bkg_url: "../hero_bkg.png",
     g_favicon_url: "https://avatars.githubusercontent.com/u/117056212?v=4",
     g_avatar_url: "https://avatars.githubusercontent.com/u/117056212?v=4",
 

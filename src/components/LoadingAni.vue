@@ -18,6 +18,9 @@ export default {
 
 <style scoped>
 .spinner {
+    margin-left: auto;
+    margin-right: auto;
+
     border: 4px solid transparent;
     border-top: 4px solid aliceblue;
     border-radius: 50%;

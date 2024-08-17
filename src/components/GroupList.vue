@@ -22,12 +22,10 @@
 <script>
 import { getgroups } from "../file_loader";
 import GroupBox from "./GroupBox.vue";
-import LoadingAni from "./LoadingAni.vue";
 
 export default {
     components: {
         GroupBox,
-        LoadingAni,
     },
     props: { max_index: { type: String, default: "-1" } },
     data() {
@@ -45,11 +43,7 @@ export default {
 };
 </script>
 
-<style>
-#loading {
-    margin-left: auto;
-    margin-right: auto;
-}
+<style scoped>
 .groups_container {
     display: flex;
     flex-direction: column;

@@ -16,7 +16,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .allgroup_page {
     display: flex;
     justify-content: center;

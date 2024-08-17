@@ -6,7 +6,7 @@
     />
 </template>
 
-<script>
+<script scoped>
 import Box from "./Box.vue";
 
 export default {
