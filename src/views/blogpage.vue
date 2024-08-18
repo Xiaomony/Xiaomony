@@ -10,7 +10,7 @@
 
 <script>
 import { findblog_byIds } from "@/file_loader";
-import { marked } from "marked";
+import { marked, Renderer } from "marked";
 export default {
     data() {
         return {
@@ -19,6 +19,7 @@ export default {
             blogId: null,
             blog_info: null,
             raw_markdown: null,
+            entrance_file: null,
         };
     },
     mounted() {
@@ -39,6 +40,7 @@ export default {
         },
         async showMarkdown([entrance, blog_info]) {
             this.blog_info = blog_info;
+            this.entrance_file = entrance;
             const resp = await fetch(entrance);
             this.raw_markdown = await resp.text();
             this.loading = false;
@@ -46,7 +48,30 @@ export default {
     },
     computed: {
         markdownContent() {
-            return marked(this.raw_markdown);
+            const localFilePrefix =
+                this.entrance_file.substring(
+                    0,
+                    this.entrance_file.lastIndexOf("/")
+                ) + "/";
+            const renderer = new Renderer();
+
+            renderer.image = token => {
+                const isLocalFile = !/^(https?:)?\/\//i.test(token.href);
+                if (isLocalFile) {
+                    token.href = localFilePrefix + token.href;
+                }
+                const titlePart = token.title ? ` title="${token.title}"` : "";
+                return `<img src="${token.href}" alt="${token.text}"${titlePart}/>`;
+            };
+            renderer.link = token => {
+                const isLocalFile = !/^(https?:)?\/\//i.test(token.href);
+                if (isLocalFile) {
+                    token.href = localFilePrefix + token.href;
+                }
+                const titlePart = token.title ? ` title="${token.title}"` : "";
+                return `<a href="${token.href}" ${titlePart} target="_blank">${token.text}</a>`;
+            };
+            return marked.parse(this.raw_markdown, { renderer });
         },
     },
 };
