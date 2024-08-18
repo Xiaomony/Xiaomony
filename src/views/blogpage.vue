@@ -1,21 +1,28 @@
 <template>
     <myNav crrPage="Blogs" />
+    <Breadcrumb :breadcrumb_struct="breadcrumb_struct" />
     <div class="blogpage">
         <LoadingAni v-if="loading" />
         <PageNotFound v-else-if="page_notfound" />
-        <Container v-else class="blogcontent" v-html="markdownContent">
+        <Container v-else class="blogcontent">
+            <h1 class="passage_title">{{ blog_info.blog_title }}</h1>
+            <p>{{ blog_info.update_time }}</p>
+            <hr />
+            <p v-html="markdownContent" />
         </Container>
     </div>
 </template>
 
 <script>
-import { findblog_byIds } from "@/file_loader";
+import { findblog_byIds, getgroups } from "@/file_loader";
 import { marked, Renderer } from "marked";
 export default {
     data() {
         return {
             loading: true,
             page_notfound: false,
+            breadcrumb_struct: null,
+
             groupId: null,
             blogId: null,
             blog_info: null,
@@ -43,6 +50,24 @@ export default {
             if (entrance == null) {
                 this.page_notfound = true;
             } else {
+                const groups = await getgroups();
+                const groupName =
+                    groups[groups.findIndex(item => item.id == this.groupId)]
+                        .group_name;
+                this.breadcrumb_struct = [
+                    {
+                        name: "Blogs",
+                        route: "/allgroups",
+                    },
+                    {
+                        name: groupName,
+                        route: "/blogroup/" + this.groupId,
+                    },
+                    {
+                        name: blog_info.blog_title,
+                        route: "/blog/" + this.$route.params.blogId,
+                    },
+                ];
                 this.blog_info = blog_info;
                 this.entrance_file = entrance;
                 const resp = await fetch(entrance);
@@ -87,8 +112,12 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-top: 10px;
     .blogcontent {
         width: 60%;
     }
+}
+.passage_title {
+    color: azure;
 }
 </style>

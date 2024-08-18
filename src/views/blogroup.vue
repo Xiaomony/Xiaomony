@@ -1,5 +1,6 @@
 <template>
     <myNav crrPage="Blogs" />
+    <Breadcrumb :breadcrumb_struct="breadcrumb_struct" />
     <div class="page">
         <Container id="bloglist">
             <LoadingAni v-if="isloading" />
@@ -35,6 +36,7 @@ export default {
             blist: {},
             group_info: null,
             page_notfound: false,
+            breadcrumb_struct: null,
         };
     },
     mounted() {
@@ -52,6 +54,16 @@ export default {
                 if (blog_list != null) {
                     this.group_info = group_info;
                     this.blist = blog_list;
+                    this.breadcrumb_struct = [
+                        {
+                            name: "Blogs",
+                            route: "/allgroups",
+                        },
+                        {
+                            name: group_info.group_name,
+                            route: "/blogroup/" + groupId,
+                        },
+                    ];
                 } else {
                     this.page_notfound = true;
                 }
