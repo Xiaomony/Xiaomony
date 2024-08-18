@@ -3,6 +3,7 @@
     <div class="page">
         <Container id="bloglist">
             <LoadingAni v-if="isloading" />
+            <PageNotFound v-else-if="page_notfound" />
             <RouterLink
                 v-else
                 style="text-decoration: none"
@@ -33,6 +34,7 @@ export default {
             isloading: true,
             blist: {},
             group_info: null,
+            page_notfound: false,
         };
     },
     mounted() {
@@ -50,8 +52,10 @@ export default {
                 if (blog_list != null) {
                     this.group_info = group_info;
                     this.blist = blog_list;
-                    this.isloading = false;
+                } else {
+                    this.page_notfound = true;
                 }
+                this.isloading = false;
             });
         },
     },

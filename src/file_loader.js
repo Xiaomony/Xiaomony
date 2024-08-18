@@ -3,7 +3,11 @@ import { config } from "@/config";
 export let group_list = null;
 export async function findblog_byIds(groupId, blogId) {
     const [group, blog_list] = await getblogs_byGroupID(groupId); //group_list.findIndex(item => item.id == groupId);
+    if (group == null) return [null, null];
     const bdex = blog_list.findIndex(item => item.id == blogId);
+    if (bdex == -1) {
+        return [null, null];
+    }
     const blog_entrance_path =
         config.g_blogs_dir + group.path + blog_list[bdex].path;
     return [blog_entrance_path, blog_list[bdex]];

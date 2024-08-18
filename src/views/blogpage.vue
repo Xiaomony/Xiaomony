@@ -2,7 +2,7 @@
     <myNav crrPage="Blogs" />
     <div class="blogpage">
         <LoadingAni v-if="loading" />
-
+        <PageNotFound v-else-if="page_notfound" />
         <Container v-else class="blogcontent" v-html="markdownContent">
         </Container>
     </div>
@@ -15,6 +15,7 @@ export default {
     data() {
         return {
             loading: true,
+            page_notfound: false,
             groupId: null,
             blogId: null,
             blog_info: null,
@@ -39,10 +40,14 @@ export default {
             this.blogId = blogId;
         },
         async showMarkdown([entrance, blog_info]) {
-            this.blog_info = blog_info;
-            this.entrance_file = entrance;
-            const resp = await fetch(entrance);
-            this.raw_markdown = await resp.text();
+            if (entrance == null) {
+                this.page_notfound = true;
+            } else {
+                this.blog_info = blog_info;
+                this.entrance_file = entrance;
+                const resp = await fetch(entrance);
+                this.raw_markdown = await resp.text();
+            }
             this.loading = false;
         },
     },
