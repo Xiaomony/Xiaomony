@@ -30,6 +30,25 @@
     .push_button:active {
         background-color: rgb(36, 36, 36);
     }
+    /* 未访问的链接 */
+    a:link {
+        color: #66ccff; /* 浅蓝色 */
+    }
+
+    /* 已访问的链接 */
+    a:visited {
+        color: #9999ff; /* 浅紫色 */
+    }
+
+    /* 悬停时 */
+    a:hover {
+        color: #ffffff; /* 白色 */
+    }
+
+    /* 按下时 */
+    a:active {
+        color: #ff6600; /* 橙色 */
+    }
 }
 
 @media (min-width: 1024px) {
