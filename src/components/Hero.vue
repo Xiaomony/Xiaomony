@@ -10,7 +10,7 @@
     height: auto;
     background-image: var(--hero_bkg_url);
     background-size: cover;
-    background-position: center -70px;
+    background-position: center center;
 
     display: flex;
     flex-direction: column;

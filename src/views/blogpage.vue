@@ -48,6 +48,7 @@ export default {
         },
         async showMarkdown([entrance, blog_info]) {
             if (entrance == null) {
+                this.breadcrumb_struct = null;
                 this.page_notfound = true;
             } else {
                 const groups = await getgroups();

@@ -1,5 +1,5 @@
 <template>
-    <nav class="breadcrumb_nav">
+    <nav v-if="breadcrumb_struct != null" class="breadcrumb_nav">
         <ul>
             <li v-for="(item, index) in breadcrumb_struct">
                 <RouterLink :to="item.route">

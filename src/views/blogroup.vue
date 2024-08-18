@@ -65,6 +65,7 @@ export default {
                         },
                     ];
                 } else {
+                    this.breadcrumb_struct = null;
                     this.page_notfound = true;
                 }
                 this.isloading = false;

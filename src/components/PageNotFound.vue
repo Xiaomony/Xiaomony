@@ -4,7 +4,7 @@
             <h1>404</h1>
             <h2>Page Not Found</h2>
         </div>
-        <img :src="this.$config.g_404icon_url" />
+        <img class="notFoundIcon" :src="this.$config.g_404icon_url" />
         <slot></slot>
     </div>
 </template>
@@ -19,6 +19,9 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+    .notFoundIcon {
+        border-radius: 10%;
     }
 }
 </style>
