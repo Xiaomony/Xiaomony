@@ -39,7 +39,7 @@ export async function loadgroups() {
     const groups_info_file = config.g_blogs_dir + config.g_blogs_groups_file;
     group_list = {};
     try {
-        const resp = await fetch(groups_info_file);
+        const resp = await fetch(groups_info_file, config.g_fetch_options);
         group_list = await resp.json();
     } catch (error) {
         console.log("read blog groups failed...\n\n" + error);
@@ -51,7 +51,7 @@ export async function load_blogs_in_group(group_path) {
         config.g_blogs_dir + group_path + config.g_group_config_file;
     let blog_list = {};
     try {
-        const resp = await fetch(group_config_path);
+        const resp = await fetch(group_config_path, config.g_fetch_options);
         blog_list = await resp.json();
     } catch (error) {
         console.log(

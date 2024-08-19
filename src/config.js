@@ -26,4 +26,10 @@ export const config = {
             url: "/allgroups",
         },
     ],
+
+    g_fetch_options: {
+        //避免缓存影响页面加载的fetch配置
+        method: "GET",
+        cache: "no-store",
+    },
 };

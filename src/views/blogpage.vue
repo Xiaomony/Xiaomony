@@ -64,6 +64,7 @@ export default {
                 this.breadcrumb_struct = null;
                 this.page_notfound = true;
             } else {
+                this.page_notfound = false;
                 const groups = await getgroups();
                 const groupName =
                     groups[groups.findIndex(item => item.id == this.groupId)]
@@ -84,7 +85,10 @@ export default {
                 ];
                 this.blog_info = blog_info;
                 this.entrance_file = entrance;
-                const resp = await fetch(entrance);
+                const resp = await fetch(
+                    entrance,
+                    this.$config.g_fetch_options
+                );
                 this.raw_markdown = await resp.text();
             }
             this.loading = false;
@@ -161,8 +165,6 @@ code,
     position: relative;
 
     .language_flag {
-        opacity: 0;
-        transition: opacity 0.2s;
         position: absolute;
         top: 0;
         font-size: 11px;
@@ -194,9 +196,6 @@ code,
     /*--------------*/
 }
 .codeblock:hover {
-    .language_flag {
-        opacity: 1;
-    }
     button {
         opacity: 0.7;
     }
