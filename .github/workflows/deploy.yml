@@ -17,6 +17,11 @@ jobs:
         with:
             node-version: "lts/*"
 
+      - name: Set up Git
+        run: |
+          git config user.name "Xiaomony"
+          git config user.email "GitHubAction@workflow.deploy"
+
       - name: Install dependencies
         run: npm install
 
