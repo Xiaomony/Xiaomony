@@ -32,10 +32,14 @@ jobs:
         run: npm run build
 
       - name: Commit local build to Git
-        run : |
-          echo "!/dist" >> .gitignore
-          git add dist/
-          git commit -m "commit /dist"
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          # run : |
+          #   echo "!/dist" >> .gitignore
+          #   git add dist/
+          #   git commit -m "commit /dist"
 
       - name: Push to "Origin/gh_pages" branch
         run: git subtree push --prefix dist origin gh-pages
