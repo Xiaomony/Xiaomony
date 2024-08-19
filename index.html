@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <link id="fav_icon" rel="icon" href="" />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Xiao-mony</title>
+      <script type="module" crossorigin src="./assets/index-PYbXekmq.js"></script>
+      <link rel="stylesheet" crossorigin href="./assets/index-DKLRGILP.css">
+    </head>
+
+    <body>
+        <script>
+            //---Copy to Clipboard
+            function copy_to_clipboard(btn) {
+                const code = btn.previousElementSibling.innerText;
+                navigator.clipboard.writeText(code).catch(err => {
+                    alert("复制失败!");
+                    console.error("Failed to copy: ", err);
+                });
+            }
+        </script>
+        <div id="app"></div>
+    </body>
+</html>
