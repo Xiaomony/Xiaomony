@@ -23,5 +23,11 @@ jobs:
       - name: Build the project
         run: npm run build
 
+      - name: Commit local build to Git
+        run : |
+          echo "!/dist" >> .gitignore
+          git add dist/
+          git commit -m "commit /dist"
+
       - name: Push to "Origin/gh_pages" branch
         run: git subtree push --prefix dist origin gh-pages
