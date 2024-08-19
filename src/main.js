@@ -28,6 +28,6 @@ app.component("myNav", myNav);
 app.component("LoadingAni", LoadingAni);
 app.component("PageNotFound", PageNotFound);
 app.component("Breadcrumb", Breadcrumb);
-//--------------------
+//-------------------
 
 app.use(router).mount("#app");

@@ -3,11 +3,25 @@
     <head>
         <meta charset="UTF-8" />
         <link id="fav_icon" rel="icon" href="" />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Xiao-mony</title>
     </head>
 
     <body>
+        <script>
+            //---Copy to Clipboard
+            function copy_to_clipboard(event) {
+                const code = event.target.previousElementSibling.innerText;
+                navigator.clipboard.writeText(code).catch(err => {
+                    alert("复制失败!");
+                    console.error("Failed to copy: ", err);
+                });
+            }
+        </script>
         <div id="app"></div>
         <script type="module" src="src/main.js"></script>
     </body>
