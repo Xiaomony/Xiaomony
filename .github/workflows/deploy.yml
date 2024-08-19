@@ -15,31 +15,17 @@ jobs:
       - name: Checkout source code
         uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-            node-version: "lts/*"
+      # - name: Set up Git
+      #   run: |
+      #     git config user.name "Xiaomony"
+      #     git config user.email "GitHubAction@workflow.deploy"
 
-      - name: Set up Git
+      - name: Install dependencies & Build the project
         run: |
-          git config user.name "Xiaomony"
-          git config user.email "GitHubAction@workflow.deploy"
+          npm install
+          npm run build
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build the project
-        run: npm run build
-
-      - name: Commit local build to Git
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          # run : |
-          #   echo "!/dist" >> .gitignore
-          #   git add dist/
-          #   git commit -m "commit /dist"
-
-      - name: Push to "Origin/gh_pages" branch
-        run: git subtree push --prefix dist origin gh-pages
+          folder: dist
