@@ -8,13 +8,13 @@
 
 - 命令行运行：
   
-  ```batch
-        npm init vue@latest
+  ```bash
+  npm init vue@latest
   ```
 
-- 此命令会创建一个基于`Vite`（构建工具）的Vue3项目，并有命令行输出：
+- 此命令会创建一个基于`Vite`（构建工具）的 Vue3 项目，并有命令行输出：
   
-  ```batch
+  ```bash
   
   > npx
   > create-vue
@@ -36,22 +36,41 @@
   
   项目初始化完成，可执行以下命令：
   
-    cd vue-project
-    npm install
-    npm run format
-    npm run dev
-  
+  cd vue-project
+  npm install
+  npm run format
+  npm run dev
   ```
 
 - 进入项目并安装依赖：
   
-  ```batch
+  ```bash
   cd <project-name>
   npm install
   ```
 
 - 运行项目：
   
-  ```batch
+  ```bash
   npm run dev
+  ```
+
+- 项目结构：
+  
+  ```bash
+  ---project dir
+   |- node_modules/        node模块
+   |- public/              全局的资源文件夹，一般使用绝对路径/...访问
+   |- src/
+   |   |- assets           资源文件夹，不仅存储图片资源，还有css等
+   |   |- components/      存放组件
+   |   |   |- *.vue        各类组件的源代码(.vue文件)
+   |   |- router/          存放路由配置文件(项目刚创建时没有)
+   |   |- views/           存放各个页面(项目刚创建时没有)
+   |   |- App.vue          根组件
+   |   |- main.js          vue项目入口文件
+   |- index.html           html框架
+   |- package.json         包配置文件
+   |- vite.config.js       vite配置文件
+   |- jsconfig.json
   ```
