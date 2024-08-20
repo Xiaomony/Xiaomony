@@ -15,7 +15,7 @@
         <script>
             //---Copy to Clipboard
             function copy_to_clipboard(btn) {
-                const code = btn.previousElementSibling.innerText;
+                const code = btn.getAttribute("data-raw-code");
                 navigator.clipboard.writeText(code).catch(err => {
                     alert("复制失败!");
                     console.error("Failed to copy: ", err);

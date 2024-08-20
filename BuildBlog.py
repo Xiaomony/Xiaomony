@@ -3,13 +3,22 @@ import os
 from pathlib import Path
 from datetime import datetime
 import shutil
+import subprocess
+from time import sleep
+import webbrowser
 
 default_workspace = Path("./workspace")
 default_entrance = "main.md"
+default_preview_url = "http://localhost:5173/#/blog/"
 
 blog_dir = Path("./public/blogs")
 groups_info = Path("groups.json")
 blogs_info = Path("config.json")
+
+
+def confirm(msg):
+    result = input(f"{msg} (y/n):").lower()
+    return (result=="y" or result=="yes")
 
 
 def copy_folder_contents(src_folder, dest_folder):
@@ -48,6 +57,7 @@ def add_new_group(id):
 
 
 def add_new_blog(id, group_path):
+    global new_blog_title
     new_blog_title = input("blog标题:")
     new_blog_description = input("blog描述:")
     dst_dir = blog_dir/group_path/new_blog_title
@@ -64,8 +74,9 @@ def add_new_blog(id, group_path):
     }
 
 
-def main():
+def blog_opr():
     group_id = None
+    blog_id = None
     group_path = None
     with open(blog_dir / groups_info, "r+", encoding="utf-8") as groupsjson:
         groups_data = json.load(groupsjson)
@@ -89,13 +100,34 @@ def main():
             
     with open(blog_dir / group_path / blogs_info, "r+", encoding="utf-8") as blogsjson:
         blogs_data = json.load(blogsjson)
+        blog_id = len(blogs_data)+1
         blogs_data.append(add_new_blog(len(blogs_data)+1, group_path))
 
         blogsjson.truncate(0)
         blogsjson.seek(0, 0)
         json.dump(blogs_data, blogsjson, indent=4, ensure_ascii=False)
+    
+    return f"{group_id}_{blog_id}"
 
+
+def main():
+    id_string = blog_opr()
+
+    if confirm("是否预览(将运行npm run dev)?"):
+        print("starting npm")
+        process = subprocess.Popen("npm run dev", shell=True, stdout=None, stderr=None)
+        webbrowser.open(default_preview_url+id_string)
+        sleep(1.5)
+        input("回车以终止预览...\n")
+        subprocess.run(f"taskkill /F /PID {process.pid} /T", shell=True)
+
+    git_command = f"git commit -m \"add blog id:{id_string}  title:{new_blog_title.replace('\"', "\\\"")}\"" 
+    if confirm(f"是否执行git提交(将运行{git_command})?"):
+        subprocess.run(f"git add * & {git_command}", shell=True, stdout=None, stderr=None)
         
+        if confirm("是否推送到remote(将运行git push)?"):
+            subprocess.run("git push", shell=True, stdout=None, stderr=None)
+
 
 if __name__ == "__main__" :
     main()
