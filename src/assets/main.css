@@ -48,6 +48,9 @@
     a:active {
         color: #ff6600; /* 橙色 */
     }
+    code {
+        font-family: "Consolas";
+    }
 }
 
 @media (min-width: 1024px) {

@@ -8,7 +8,7 @@
             <h1 class="passage_title">{{ blog_info.blog_title }}</h1>
             <p>{{ blog_info.update_time }}</p>
             <hr />
-            <p v-html="markdownContent" style="line-height: 200%" />
+            <p v-html="markdownContent" class="blog_mainbody" />
         </Container>
     </div>
 </template>
