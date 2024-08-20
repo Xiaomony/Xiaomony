@@ -1,6 +1,6 @@
 export const config = {
     g_hero_bkg_url: "/hero_bkg.webp",
-    g_404icon_url: "/404icon.png",
+    g_404icon_url: "/404icon.webp",
 
     g_favicon_url: "https://avatars.githubusercontent.com/u/117056212?v=4",
     g_avatar_url: "https://avatars.githubusercontent.com/u/117056212?v=4",
