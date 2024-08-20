@@ -1,9 +1,16 @@
 [
     {
-        "blog_title": "(1)开发环境",
-        "description": "some description",
+        "blog_title": "(1) 开发环境",
+        "description": "Vue 开发环境搭建(使用Vite构建)",
         "update_time": "2024-8-19",
-        "path": "1 开发环境/main.md",
+        "path": "(1) 开发环境/main.md",
         "id": 1
+    },
+    {
+        "blog_title": "(2) 基本语法",
+        "description": "Vue中的模板语法、属性绑定、条件渲染、列表渲染",
+        "update_time": "2024-08-20  13:52:08",
+        "path": "(2) 基本语法/main.md",
+        "id": 2
     }
 ]

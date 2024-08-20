@@ -9,15 +9,15 @@
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Xiao-mony</title>
-      <script type="module" crossorigin src="./assets/index-CPqX08Vx.js"></script>
-      <link rel="stylesheet" crossorigin href="./assets/index-aWp7IO14.css">
+      <script type="module" crossorigin src="./assets/index-BRgMiusz.js"></script>
+      <link rel="stylesheet" crossorigin href="./assets/index-DZVdKPIv.css">
     </head>
 
     <body>
         <script>
             //---Copy to Clipboard
             function copy_to_clipboard(btn) {
-                const code = btn.previousElementSibling.innerText;
+                const code = btn.getAttribute("data-raw-code");
                 navigator.clipboard.writeText(code).catch(err => {
                     alert("复制失败!");
                     console.error("Failed to copy: ", err);
