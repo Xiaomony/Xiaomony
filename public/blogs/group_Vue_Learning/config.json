@@ -19,5 +19,12 @@
         "update_time": "2024-08-21  11:33:07",
         "path": "(3) Vue项目构成/main.md",
         "id": 3
+    },
+    {
+        "blog_title": "(4) 事件处理",
+        "description": "事件响应函数、事件传参、事件修饰符",
+        "update_time": "2024-08-21  13:41:57",
+        "path": "(4) 事件处理/main.md",
+        "id": 4
     }
 ]

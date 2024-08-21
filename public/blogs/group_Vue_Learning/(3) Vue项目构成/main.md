@@ -22,6 +22,8 @@ Vue项目的基本结构：
 
 其中的 **_网页_** 的“根”为`index.html`，项目的 **_入口文件_** 为`main.js`
 
+## Vue应用实例
+
 项目刚创建时的`index.html`：
 
 ```html
@@ -59,3 +61,29 @@ app.mount("#app");
 - `app.mount()`用于将Vue应用程序挂载到一个标签上，参数为一个CSS选择器，而`#app`选择了`index.html`中的`<div id="app"></div>`
 
 至此，Vue应用程序已经被创建，并且被挂载到`index.html`中的`<div id="app"></div>`上，此后Vue应用程序中的所有内容最终都被渲染到这个`<div>`标签中
+
+## 组件与根组件
+
+项目刚创建时的`App.vue`类似以下结构
+
+```html
+<script setup>
+import HelloWorld from './components/HelloWorld.vue'
+</script>
+
+<template>
+  <HelloWorld />
+</template>
+
+<style scoped>
+……
+</style>
+```
+
+- `import HelloWorld from './components/HelloWorld.vue'`：
+
+  从`HelloWorld.vue`中导入`HelloWorld`子组件
+
+- `<HelloWorld />`： 呈现子组件
+
+而子组件中就是使用Vue基本语法搭建的页面
