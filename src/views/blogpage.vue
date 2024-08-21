@@ -187,6 +187,9 @@ code,
     display: flex;
     padding: 15px 5px 5px;
     position: relative;
+    .hljs-comment {
+        color: #6b7e83;
+    }
 
     .language_flag {
         position: absolute;
