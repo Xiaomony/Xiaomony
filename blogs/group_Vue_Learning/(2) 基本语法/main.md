@@ -143,3 +143,42 @@
   ```
 
   可以使用结构语法获得`item`、`index`、`value`、`key`，如上
+
+## 列表渲染中使用key属性
+
+  使用`v-for`渲染列表或对象时，如果列表或对象中数据的顺序变了，而值没有变，Vue不会修改DOM元素的顺序，而是直接重新渲染，这样的开销较大
+
+  为了解决这个问题，可以在渲染时给每个元素加上`key`属性，使Vue能够跟新DOM元素的顺序而不是重新渲染
+
+  ```html
+  <template>
+    <ul>
+      <li v-for="item in list" :key="item.key">{{ item.value }}</li>
+    </ul>
+  <template>
+
+  <script>
+    export default {
+      data() {
+        return {
+          list: [
+            {
+              value: 1,
+              key: "AEVCDUE",
+            },
+            {
+              value: 2,
+              key: "CVUASDN",
+            },
+            {
+              value: 3,
+              key: "XICUBND",
+            },
+          ]
+        }
+      }
+    }
+  </script>
+  ```
+
+  其中的`key`应该只与数据有关，实际开发中应该是从后端返回的表示这段数据的唯一的`key`
