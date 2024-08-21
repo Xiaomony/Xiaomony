@@ -12,5 +12,12 @@
         "update_time": "2024-08-20  13:52:08",
         "path": "(2) 基本语法/main.md",
         "id": 2
+    },
+    {
+        "blog_title": "(3) Vue项目构成",
+        "description": "Vue项目的基本构成、根组件、入口程序",
+        "update_time": "2024-08-21  11:33:07",
+        "path": "(3) Vue项目构成/main.md",
+        "id": 3
     }
 ]
