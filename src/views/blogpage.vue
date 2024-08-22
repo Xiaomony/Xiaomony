@@ -227,4 +227,14 @@ code,
         opacity: 0.7;
     }
 }
+blockquote {
+    margin: 10px;
+    padding-left: 20px;
+    border-left: 4px solid rgb(143, 163, 167);
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: rgb(82, 82, 82);
+}
 </style>
