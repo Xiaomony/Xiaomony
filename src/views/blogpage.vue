@@ -187,8 +187,10 @@ code,
     display: flex;
     padding: 15px 5px 5px;
     position: relative;
+
     .hljs-comment {
-        color: #6b7e83;
+        color: #8fa1a5;
+        opacity: 0.7;
     }
 
     .language_flag {
