@@ -114,6 +114,7 @@ export default {
     methods: {
         refreshBlogPage(id) {
             const [groupId, blogId] = id.split("_");
+            this.loading = true;
             findblog_byIds(groupId, blogId).then(this.showMarkdown);
             this.groupId = groupId;
             this.blogId = blogId;
