@@ -4,12 +4,50 @@
     <div class="blogpage">
         <LoadingAni v-if="loading" />
         <PageNotFound v-else-if="page_notfound" />
-        <Container v-else class="blogcontent">
-            <h1 class="passage_title">{{ blog_info.blog_title }}</h1>
-            <p>{{ blog_info.update_time }}</p>
-            <hr />
-            <p v-html="markdownContent" class="blog_mainbody" />
-        </Container>
+        <template v-else>
+            <button
+                class="push_button last_blog_btn"
+                title="last blog"
+                @click="move_to_blog(-1)"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24px"
+                    viewBox="0 -960 960 960"
+                    width="24px"
+                    fill="#e8eaed"
+                >
+                    <path
+                        d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"
+                    />
+                </svg>
+            </button>
+            <Container class="blogcontent">
+                <h1 class="passage_title">
+                    {{ blog_info.blog_title }}
+                </h1>
+                <p>{{ blog_info.update_time }}</p>
+                <hr />
+                <p v-html="markdownContent" class="blog_mainbody" />
+            </Container>
+            <button
+                class="push_button next_blog_btn"
+                title="last blog"
+                @click="move_to_blog(1)"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24px"
+                    viewBox="0 -960 960 960"
+                    width="24px"
+                    fill="#e8eaed"
+                >
+                    <path
+                        d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"
+                    />
+                </svg>
+            </button>
+        </template>
     </div>
 </template>
 
@@ -36,7 +74,7 @@ function removeCodeBlock_start_end(str) {
     for (let i = 0; i < str.length; i++) {
         if (str[i] === "`") count++;
         else if (str[i] === "\n" && count >= 3) {
-            start = i;
+            start = i + 1;
             break;
         }
     }
@@ -114,6 +152,20 @@ export default {
             }
             this.loading = false;
         },
+        async move_to_blog(offset) {
+            const groups = await getgroups();
+            const gdex = groups.findIndex(item => item.id == this.groupId);
+            let bdex = groups[gdex].blog_list.findIndex(
+                item => item.id == this.blogId
+            );
+            bdex = (bdex + offset) % groups[gdex].blog_list.length;
+            if (bdex < 0) {
+                bdex = groups[gdex].blog_list.length - 1;
+            }
+            this.$router.push(
+                `/blog/${this.groupId}_` + groups[gdex].blog_list[bdex].id
+            );
+        },
     },
     computed: {
         markdownContent() {
@@ -164,12 +216,27 @@ export default {
 <style scoped>
 .blogpage {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    /* flex-direction: column; */
+    justify-content: center;
     padding-top: 10px;
     .blogcontent {
         color: rgb(233, 232, 232);
         width: 60%;
+    }
+
+    gap: 1%;
+    .last_blog_btn,
+    .next_blog_btn {
+        padding: 0;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        svg {
+            width: 100%;
+            height: 100%;
+        }
     }
 }
 .passage_title {
