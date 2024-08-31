@@ -8,7 +8,7 @@ export const config = {
     g_github_icon_url:
         "https://github.githubassets.com/favicons/favicon-dark.svg",
 
-    g_blogs_dir: "blogs/",
+    g_blogs_dir: "/blogs/",
     g_blogs_groups_file: "groups.json",
     g_group_config_file: "config.json",
 

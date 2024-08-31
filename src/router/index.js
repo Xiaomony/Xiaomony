@@ -1,4 +1,8 @@
-import { createRouter, createWebHashHistory } from "vue-router";
+import {
+    createRouter,
+    createWebHashHistory,
+    createWebHistory,
+} from "vue-router";
 
 import Home from "@/views/Home.vue";
 import Intro from "@/views/Intro.vue";
@@ -7,7 +11,7 @@ import blogpage from "@/views/blogpage.vue";
 import allgroups from "@/views/allgroups.vue";
 
 const router = createRouter({
-    history: createWebHashHistory(),
+    history: createWebHistory(),
     routes: [
         { path: "/", component: Home },
         { path: "/Intro", component: Intro },
