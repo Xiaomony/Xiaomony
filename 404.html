@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Redirecting...</title>
+        <script type="text/javascript">
+            // 获取当前路径
+            var pathname = window.location.pathname;
+
+            // 将用户重定向到index.html，并保留路径
+            if (pathname) {
+                window.location.href = "/index.html#" + pathname;
+            }
+        </script>
+    </head>
+    <body>
+        <p>Redirecting...</p>
+    </body>
+</html>
