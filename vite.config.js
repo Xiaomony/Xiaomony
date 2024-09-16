@@ -12,5 +12,5 @@ export default defineConfig({
         },
     },
     preset: ["@vue/cli-plugin-babel/preset"],
-    base: "./",
+    base: "/",
 });
