@@ -11,7 +11,7 @@ import blogpage from "@/views/blogpage.vue";
 import allgroups from "@/views/allgroups.vue";
 
 const router = createRouter({
-    history: createWebHistory(),
+    history: createWebHashHistory(),
     routes: [
         { path: "/", component: Home },
         { path: "/Intro", component: Intro },
